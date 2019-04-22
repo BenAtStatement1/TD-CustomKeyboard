@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TDCustomKeyboard.h"
 
 @interface AppDelegate ()
 

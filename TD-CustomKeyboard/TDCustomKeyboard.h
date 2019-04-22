@@ -34,5 +34,6 @@ typedef NS_ENUM(NSInteger, TDKeyboardStyle)
 // Public methods
 - (void)attachKeyboardToTextField:(UITextField *)textField;
 - (void)closeCustomKeyboards;
-
+// - (void)keyboardClosePressed:(UIButton *)sender;
+- (void)addGestureRecognizer:(UIView *)view;
 @end

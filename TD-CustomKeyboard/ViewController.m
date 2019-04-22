@@ -21,6 +21,9 @@
     // Initialize the keyboard
     customKeyboard = [[TDCustomKeyboard alloc] init];
     [customKeyboard setKeyboardTint:[UIColor orangeColor]];
+    [customKeyboard addGestureRecognizer: self.view];
+//    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardClosePressed:)];
+//    [self.view addGestureRecognizer:singleFingerTap];
 }
 
 // Text field 1 edit did begin
@@ -36,7 +39,7 @@
 - (IBAction)textField2EditBegan:(id)sender
 {
     // Attach the custom keyboard
-    [customKeyboard setKeyboardStyle:TDKeyboardStyleDark];
+    [customKeyboard setKeyboardStyle:TDKeyboardStyleLight];
     [customKeyboard setEnableAccessoryView:YES];
     [customKeyboard attachKeyboardToTextField:sender];
 }

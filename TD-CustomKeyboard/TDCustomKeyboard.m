@@ -25,6 +25,11 @@
     return self;
 }
 
+- (void) addGestureRecognizer: (UIView *)view {
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardClosePressed:)];
+    [view addGestureRecognizer:singleFingerTap];
+}
+    
 // Attach keyboard to textField
 - (void)attachKeyboardToTextField:(UITextField *)textField
 {
@@ -43,12 +48,11 @@
     if (!window) window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     
     // Create the black mask layer
-    [self createBlackMask];
+    // [self createBlackMask]; gesturerecognizer is bound to mask to close keyboard.
     
     // Animate the black mask
     [UIView animateWithDuration:0.25 animations:^{[blackMask setAlpha:self.screenTint];}];
-    
-    // Create the keyboard
+        // Create the keyboard
     [self createKeyboardView];
     
     // Move the keyboard into the view with blackMask
@@ -183,7 +187,7 @@
     // Generate the custom key
     UIButton *customKey = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(pmKey.frame)+keyPadding, 4*keyPadding+3*keyHeight+accessoryViewHeight, (keyWidth-keyPadding)/2.0, keyHeight)];
     [customKey addTarget:self action:@selector(keyPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [customKey setTitle:@"." forState:UIControlStateNormal];
+    [customKey setTitle:@"/" forState:UIControlStateNormal];
     [customKey setTitleColor:keysTitleColor forState:UIControlStateNormal];
     [customKey.titleLabel setFont:[UIFont systemFontOfSize:customKey.frame.size.height*0.5 weight:UIFontWeightMedium]];
     [customKey setBackgroundImage:[self imageFromColor:keysHighlightColor] forState:UIControlStateHighlighted];
